@@ -1,0 +1,14 @@
+$('#<%= params[:id] %>').unbind('click');
+$('#<%= params[:id] %>').mouseover(function() {
+    $(this).css({ background: "#FFF" });
+});
+$('#players_turn').html("Player <%= session[:players_turn] %>'s Turn");
+<% if session[:players_turn] == 1 %>
+    $('#<%= params[:id] %>').html("<%= escape_javascript(image_tag 'x.jpg', :width => 60, :height => 60).html_safe %>");
+<% else %>
+    $('#<%= params[:id] %>').html("<%= escape_javascript(image_tag 'o.jpg', :width => 60, :height => 60).html_safe %>");
+<% end %>
+
+<% if @winner.present? %>
+    $('#results').html("The winner is Player <%= @winner %>");
+<% end %>

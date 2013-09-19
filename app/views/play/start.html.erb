@@ -1,0 +1,38 @@
+<script>
+    $(function() {
+        $('.square').click(function() {
+            $.ajax({
+                url: "choose?id="+$(this).attr('id'),
+                type: "GET",
+                dataType: "script"
+            });
+        });
+    });
+</script>
+<style>
+    .square:hover {cursor: hand; cursor: pointer;}
+</style>
+<div id="results" style="margin: 50px auto; width: 150px;"></div>
+<div id="content">
+    <div id="players_turn" style="margin: 50px auto; width: 100px;">
+        Player <%= session[:players_turn] %>'s Turn
+    </div>
+    <div id="board" style="margin: 0 auto; width: 183px; border: 1px solid #000">
+        <div style="display: table-row;">
+            <div id="1" class="square" style="display: table-cell; width: 60px; height: 60px; border-right: 1px solid blue;  border-bottom: 1px solid blue;"></div>
+            <div id="2" class="square" style="display: table-cell; width: 60px; height: 60px; border-right: 1px solid blue; border-bottom: 1px solid blue;"></div>
+            <div id="3" class="square" style="display: table-cell; width: 60px; height: 60px; border-bottom: 1px solid blue;"></div>
+        </div>
+        <div style="display: table-row">
+            <div id="4" class="square" style="display: table-cell; width: 60px; height: 60px; border-right: 1px solid blue;  border-bottom: 1px solid blue;"></div>
+            <div id="5" class="square" style="display: table-cell; width: 60px; height: 60px; border-right: 1px solid blue; border-bottom: 1px solid blue;"></div>
+            <div id="6" class="square" style="display: table-cell; width: 60px; height: 60px; border-bottom: 1px solid blue;"></div>
+        </div>
+        <div style="display: table-row">
+            <div id="7" class="square" style="display: table-cell; width: 60px; height: 60px; border-right: 1px solid blue;"></div>
+            <div id="8" class="square" style="display: table-cell; width: 60px; height: 60px; border-right: 1px solid blue;"></div>
+            <div id="9" class="square" style="display: table-cell; width: 60px; height: 60px;"></div>
+        </div>
+    </div>
+</div>
+<div style="text-align: center; margin: 60px;"><%= button_to 'Restart', :action => :start %></div>
